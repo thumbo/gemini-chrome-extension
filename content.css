@@ -1,0 +1,611 @@
+/* ============================================================
+   Gemini Architect — Injected Styles
+   ============================================================ */
+
+/* --------------- CSS Variables (dark theme default) --------------- */
+:root {
+  --ga-bg: #1e1f20;
+  --ga-bg-hover: #2a2b2d;
+  --ga-bg-active: #333537;
+  --ga-bg-surface: #282a2c;
+  --ga-bg-overlay: #2d2e30;
+  --ga-border: #3c3e41;
+  --ga-text: #e3e3e3;
+  --ga-text-secondary: #9aa0a6;
+  --ga-text-muted: #6e7479;
+  --ga-accent: #8ab4f8;
+  --ga-accent-hover: #aecbfa;
+  --ga-danger: #f28b82;
+  --ga-danger-hover: #ee675c;
+  --ga-success: #81c995;
+  --ga-font: 'Google Sans', 'Segoe UI', Roboto, sans-serif;
+  --ga-radius: 8px;
+  --ga-radius-sm: 4px;
+  --ga-transition: 150ms ease;
+}
+
+/* --------------- Light theme override --------------- */
+.ga-light-theme {
+  --ga-bg: #ffffff;
+  --ga-bg-hover: #f1f3f4;
+  --ga-bg-active: #e8eaed;
+  --ga-bg-surface: #f8f9fa;
+  --ga-bg-overlay: #ffffff;
+  --ga-border: #dadce0;
+  --ga-text: #202124;
+  --ga-text-secondary: #5f6368;
+  --ga-text-muted: #9aa0a6;
+  --ga-accent: #1a73e8;
+  --ga-accent-hover: #1967d2;
+  --ga-danger: #d93025;
+  --ga-danger-hover: #c5221f;
+  --ga-success: #188038;
+}
+
+/* --------------- Folders Container --------------- */
+#ga-folders-container {
+  padding: 4px 8px 8px;
+  font-family: var(--ga-font);
+  color: var(--ga-text);
+}
+
+/* Section header */
+.ga-folders-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 8px 4px;
+  user-select: none;
+}
+
+.ga-folders-header .ga-header-title {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--ga-text-secondary);
+}
+
+.ga-folders-header .ga-add-folder-btn {
+  background: none;
+  border: none;
+  color: var(--ga-text-secondary);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: var(--ga-radius-sm);
+  transition: background var(--ga-transition), color var(--ga-transition);
+}
+
+.ga-folders-header .ga-add-folder-btn:hover {
+  background: var(--ga-bg-hover);
+  color: var(--ga-text);
+}
+
+/* --------------- Individual Folder --------------- */
+.ga-folder {
+  margin: 2px 0;
+  border-radius: var(--ga-radius);
+  overflow: hidden;
+}
+
+.ga-folder-row {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: var(--ga-radius);
+  transition: background var(--ga-transition);
+  gap: 6px;
+  user-select: none;
+}
+
+.ga-folder-row:hover {
+  background: var(--ga-bg-hover);
+}
+
+.ga-folder-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+  cursor: pointer;
+  width: 24px;
+  text-align: center;
+}
+
+.ga-folder-name {
+  flex: 1;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--ga-text);
+}
+
+.ga-folder-name-input {
+  flex: 1;
+  font-size: 14px;
+  background: var(--ga-bg-surface);
+  border: 1px solid var(--ga-accent);
+  border-radius: var(--ga-radius-sm);
+  color: var(--ga-text);
+  padding: 2px 6px;
+  outline: none;
+  font-family: var(--ga-font);
+}
+
+.ga-folder-chevron {
+  font-size: 12px;
+  color: var(--ga-text-muted);
+  transition: transform var(--ga-transition);
+  flex-shrink: 0;
+}
+
+.ga-folder.collapsed .ga-folder-chevron {
+  transform: rotate(-90deg);
+}
+
+.ga-folder-actions {
+  display: none;
+  gap: 2px;
+  align-items: center;
+}
+
+.ga-folder-row:hover .ga-folder-actions {
+  display: flex;
+}
+
+.ga-folder-action-btn {
+  background: none;
+  border: none;
+  color: var(--ga-text-muted);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 4px;
+  border-radius: var(--ga-radius-sm);
+  line-height: 1;
+  transition: background var(--ga-transition), color var(--ga-transition);
+}
+
+.ga-folder-action-btn:hover {
+  background: var(--ga-bg-active);
+  color: var(--ga-text);
+}
+
+.ga-folder-action-btn.danger:hover {
+  color: var(--ga-danger);
+}
+
+/* Folder chat list */
+.ga-folder-chats {
+  padding-left: 16px;
+  overflow: hidden;
+}
+
+.ga-folder.collapsed .ga-folder-chats {
+  display: none;
+}
+
+.ga-folder-chat {
+  display: flex;
+  align-items: center;
+  padding: 5px 8px;
+  border-radius: var(--ga-radius-sm);
+  cursor: pointer;
+  transition: background var(--ga-transition);
+  gap: 6px;
+}
+
+.ga-folder-chat:hover {
+  background: var(--ga-bg-hover);
+}
+
+.ga-folder-chat-title {
+  flex: 1;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--ga-text);
+  text-decoration: none;
+}
+
+.ga-folder-chat-title:hover {
+  color: var(--ga-accent);
+}
+
+.ga-folder-chat-remove {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--ga-text-muted);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0 4px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.ga-folder-chat:hover .ga-folder-chat-remove {
+  display: block;
+}
+
+.ga-folder-chat-remove:hover {
+  color: var(--ga-danger);
+}
+
+/* --------------- Drag & Drop --------------- */
+.ga-folder-drag-over > .ga-folder-row {
+  background: var(--ga-accent) !important;
+  color: #000 !important;
+  opacity: 0.85;
+}
+
+.ga-folder-drag-over > .ga-folder-row * {
+  color: #000 !important;
+}
+
+.ga-chat-dragging {
+  opacity: 0.5;
+}
+
+/* --------------- Search Bars --------------- */
+.ga-search-container {
+  padding: 4px 8px;
+}
+
+.ga-search-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-family: var(--ga-font);
+  color: var(--ga-text);
+  background: var(--ga-bg-surface);
+  border: 1px solid var(--ga-border);
+  border-radius: var(--ga-radius);
+  outline: none;
+  transition: border-color var(--ga-transition);
+}
+
+.ga-search-input:focus {
+  border-color: var(--ga-accent);
+}
+
+.ga-search-input::placeholder {
+  color: var(--ga-text-muted);
+}
+
+/* --------------- Emoji Picker --------------- */
+.ga-emoji-picker {
+  position: absolute;
+  z-index: 10000;
+  background: var(--ga-bg-overlay);
+  border: 1px solid var(--ga-border);
+  border-radius: var(--ga-radius);
+  padding: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.ga-emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 2px;
+}
+
+.ga-emoji-cell {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: var(--ga-radius-sm);
+  border: none;
+  background: none;
+  transition: background var(--ga-transition);
+}
+
+.ga-emoji-cell:hover {
+  background: var(--ga-bg-hover);
+}
+
+.ga-emoji-search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px 8px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-family: var(--ga-font);
+  color: var(--ga-text);
+  background: var(--ga-bg-surface);
+  border: 1px solid var(--ga-border);
+  border-radius: var(--ga-radius-sm);
+  outline: none;
+}
+
+/* --------------- Bulk Delete --------------- */
+.ga-bulk-toggle-btn {
+  background: none;
+  border: none;
+  color: var(--ga-text-secondary);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: var(--ga-radius-sm);
+  font-family: var(--ga-font);
+  transition: background var(--ga-transition), color var(--ga-transition);
+}
+
+.ga-bulk-toggle-btn:hover {
+  background: var(--ga-bg-hover);
+  color: var(--ga-text);
+}
+
+.ga-bulk-toggle-btn.active {
+  background: var(--ga-accent);
+  color: #000;
+}
+
+.ga-bulk-checkbox {
+  flex-shrink: 0;
+  margin-right: 4px;
+  accent-color: var(--ga-accent);
+}
+
+.ga-bulk-bar {
+  position: sticky;
+  bottom: 0;
+  background: var(--ga-bg-surface);
+  border-top: 1px solid var(--ga-border);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+.ga-bulk-delete-btn {
+  background: var(--ga-danger);
+  color: #fff;
+  border: none;
+  padding: 6px 16px;
+  border-radius: var(--ga-radius);
+  font-family: var(--ga-font);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background var(--ga-transition);
+}
+
+.ga-bulk-delete-btn:hover {
+  background: var(--ga-danger-hover);
+}
+
+.ga-bulk-count {
+  font-size: 13px;
+  color: var(--ga-text-secondary);
+}
+
+/* --------------- Wide Mode --------------- */
+body.ga-wide-mode .msg-content-container,
+body.ga-wide-mode [class*="response-container"],
+body.ga-wide-mode [class*="conversation-container"],
+body.ga-wide-mode main > div > div {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.ga-wide-toggle {
+  background: none;
+  border: 1px solid var(--ga-border);
+  color: var(--ga-text-secondary);
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: var(--ga-radius);
+  font-family: var(--ga-font);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background var(--ga-transition), color var(--ga-transition), border-color var(--ga-transition);
+}
+
+.ga-wide-toggle:hover {
+  background: var(--ga-bg-hover);
+  color: var(--ga-text);
+}
+
+.ga-wide-toggle.active {
+  border-color: var(--ga-accent);
+  color: var(--ga-accent);
+}
+
+/* --------------- New Chat Button --------------- */
+.ga-new-chat-btn {
+  background: none;
+  border: 1px solid var(--ga-border);
+  color: var(--ga-text-secondary);
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: var(--ga-radius);
+  font-family: var(--ga-font);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background var(--ga-transition), color var(--ga-transition);
+}
+
+.ga-new-chat-btn:hover {
+  background: var(--ga-bg-hover);
+  color: var(--ga-text);
+}
+
+/* --------------- Header Buttons Container --------------- */
+.ga-header-buttons {
+  position: fixed;
+  top: 12px;
+  right: 80px;
+  display: flex;
+  gap: 8px;
+  z-index: 1000;
+}
+
+/* --------------- Copy Conversation Button --------------- */
+.ga-copy-convo-btn {
+  background: none;
+  border: 1px solid var(--ga-border);
+  color: var(--ga-text-secondary);
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: var(--ga-radius);
+  font-family: var(--ga-font);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background var(--ga-transition), color var(--ga-transition);
+}
+
+.ga-copy-convo-btn:hover {
+  background: var(--ga-bg-hover);
+  color: var(--ga-text);
+}
+
+/* --------------- Toast Notification --------------- */
+.ga-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ga-bg-surface);
+  color: var(--ga-text);
+  border: 1px solid var(--ga-border);
+  border-radius: var(--ga-radius);
+  padding: 10px 20px;
+  font-family: var(--ga-font);
+  font-size: 14px;
+  z-index: 100000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  animation: ga-toast-in 200ms ease, ga-toast-out 200ms ease 2s forwards;
+}
+
+@keyframes ga-toast-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(16px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes ga-toast-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* --------------- Confirmation Dialog --------------- */
+.ga-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ga-dialog {
+  background: var(--ga-bg-overlay);
+  border: 1px solid var(--ga-border);
+  border-radius: 12px;
+  padding: 24px;
+  min-width: 320px;
+  max-width: 400px;
+  font-family: var(--ga-font);
+  color: var(--ga-text);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.ga-dialog-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.ga-dialog-message {
+  font-size: 14px;
+  color: var(--ga-text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.ga-dialog-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.ga-dialog-btn {
+  padding: 8px 20px;
+  border-radius: var(--ga-radius);
+  border: none;
+  font-family: var(--ga-font);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background var(--ga-transition);
+}
+
+.ga-dialog-btn.cancel {
+  background: var(--ga-bg-hover);
+  color: var(--ga-text);
+}
+
+.ga-dialog-btn.cancel:hover {
+  background: var(--ga-bg-active);
+}
+
+.ga-dialog-btn.confirm {
+  background: var(--ga-accent);
+  color: #000;
+}
+
+.ga-dialog-btn.confirm:hover {
+  background: var(--ga-accent-hover);
+}
+
+.ga-dialog-btn.danger {
+  background: var(--ga-danger);
+  color: #fff;
+}
+
+.ga-dialog-btn.danger:hover {
+  background: var(--ga-danger-hover);
+}
+
+/* --------------- Hide Location --------------- */
+body.ga-hide-location [data-location],
+body.ga-hide-location .location-text {
+  visibility: hidden !important;
+}
+
+/* --------------- Scrollbar Styling for Emoji Picker --------------- */
+.ga-emoji-picker::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ga-emoji-picker::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ga-emoji-picker::-webkit-scrollbar-thumb {
+  background: var(--ga-border);
+  border-radius: 3px;
+}
+
+/* --------------- Folder empty state --------------- */
+.ga-folder-empty {
+  padding: 6px 8px;
+  font-size: 12px;
+  color: var(--ga-text-muted);
+  font-style: italic;
+}

@@ -1,0 +1,68 @@
+{
+  "manifest_version": 3,
+  "name": "Gemini Architect",
+  "version": "1.0.0",
+  "description": "Organize your Google Gemini chats with folders, drag-and-drop, bulk delete, wide mode, and more.",
+  "permissions": ["storage", "activeTab"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://gemini.google.com/*"],
+      "css": ["content.css"],
+      "js": [
+        "lib/storage.js",
+        "lib/dom-observer.js",
+        "lib/folder-manager.js",
+        "lib/drag-drop.js",
+        "lib/search.js",
+        "lib/bulk-delete.js",
+        "lib/wide-mode.js",
+        "lib/copy-conversation.js",
+        "lib/shortcuts.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "copy-last-response": {
+      "suggested_key": {
+        "default": "Alt+Shift+C"
+      },
+      "description": "Copy last Gemini response"
+    },
+    "copy-conversation": {
+      "suggested_key": {
+        "default": "Alt+Shift+A"
+      },
+      "description": "Copy entire conversation"
+    },
+    "toggle-wide-mode": {
+      "suggested_key": {
+        "default": "Alt+Shift+W"
+      },
+      "description": "Toggle wide mode"
+    },
+    "new-chat": {
+      "suggested_key": {
+        "default": "Alt+Shift+N"
+      },
+      "description": "Start new chat"
+    }
+  }
+}

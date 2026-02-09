@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemini Architect</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="popup-header">
+      <h1>Gemini Architect</h1>
+      <span class="version">v1.0.0</span>
+    </header>
+
+    <!-- Data Management -->
+    <section class="popup-section">
+      <h2>Data</h2>
+      <div class="button-row">
+        <button id="download-data" class="popup-btn">Download Data</button>
+        <label class="popup-btn file-label" for="restore-file">Restore from File</label>
+        <input type="file" id="restore-file" accept=".json" hidden>
+      </div>
+      <div id="data-status" class="status-msg"></div>
+    </section>
+
+    <!-- Keyboard Shortcuts -->
+    <section class="popup-section">
+      <h2>Keyboard Shortcuts</h2>
+      <div class="shortcuts-grid">
+        <div class="shortcut-row">
+          <label>Copy Last Response</label>
+          <input type="text" class="shortcut-input" data-action="copyLastResponse" readonly placeholder="Click to set">
+        </div>
+        <div class="shortcut-row">
+          <label>Copy Conversation</label>
+          <input type="text" class="shortcut-input" data-action="copyConversation" readonly placeholder="Click to set">
+        </div>
+        <div class="shortcut-row">
+          <label>Toggle Wide Mode</label>
+          <input type="text" class="shortcut-input" data-action="toggleWide" readonly placeholder="Click to set">
+        </div>
+        <div class="shortcut-row">
+          <label>New Chat</label>
+          <input type="text" class="shortcut-input" data-action="newChat" readonly placeholder="Click to set">
+        </div>
+      </div>
+      <button id="save-shortcuts" class="popup-btn primary">Save Shortcuts</button>
+      <div id="shortcut-status" class="status-msg"></div>
+    </section>
+
+    <!-- Links -->
+    <section class="popup-section links">
+      <a href="https://github.com/nicejacket/gemini-architect/issues" target="_blank" class="popup-link">Support &amp; Feedback</a>
+      <a href="https://buymeacoffee.com/" target="_blank" class="popup-link">Tip Jar</a>
+    </section>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
