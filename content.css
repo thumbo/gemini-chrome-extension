@@ -398,6 +398,46 @@ body.ga-wide-mode main > div > div {
   width: 100% !important;
 }
 
+/* Wide Mode Component: User Prompts */
+body.ga-wide-mode main [data-turn-role="user"],
+body.ga-wide-mode main [class*="user-message"],
+body.ga-wide-mode main [class*="query"] {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Ensure inner text blocks within the prompt container also expand */
+body.ga-wide-mode main [data-turn-role="user"] > div,
+body.ga-wide-mode main [class*="user-message"] > div {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Target ALL nested child wrappers/containers inside the prompt */
+body.ga-wide-mode main [data-turn-role="user"] div,
+body.ga-wide-mode main [class*="user-message"] div,
+body.ga-wide-mode main [class*="query"] div {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Wide Mode Component: Data Tables */
+body.ga-wide-mode main table,
+body.ga-wide-mode main .table-container,
+body.ga-wide-mode main [class*="table"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  display: table !important;
+}
+body.ga-wide-mode main div:has(> table),
+body.ga-wide-mode main [class*="table-wrapper"] {
+  overflow-x: visible !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* Wide Mode Interface Toggle Button */
 .ga-wide-toggle {
   background: none;
   border: 1px solid var(--ga-border);
@@ -447,11 +487,21 @@ body.ga-wide-mode main > div > div {
 /* --------------- Header Buttons Container --------------- */
 .ga-header-buttons {
   position: fixed;
-  top: 12px;
-  right: 80px;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   gap: 8px;
   z-index: 1000;
+}
+
+/* Position Search Bar */
+.ga-search-container {
+  position: fixed !important;
+  top: 10px !important;
+  left: calc(50% + 140px) !important;
+  z-index: 1001 !important;
+  width: 180px !important;
 }
 
 /* --------------- Copy Conversation Button --------------- */
